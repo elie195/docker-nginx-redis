@@ -14,4 +14,8 @@ red:set("/DOC-2351", "/IT/Rules")
 local redirect_candidate = ngx.var.request_uri
 local rewrite_value, err = red:get(redirect_candidate)
 -- modify the next line to suit your needs
-ngx.redirect("http://ubuntu" .. rewrite_value, 301);
+if rewrite_value ~= ngx.null then
+  ngx.redirect("http://ubuntu" .. rewrite_value, 301);
+else
+  ngx.exit(400)
+end
