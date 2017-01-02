@@ -1,0 +1,6 @@
+FROM tutum/nginx
+RUN apt-get update; apt-get install -y lua-nginx-redis --force-yes
+RUN rm /etc/nginx/sites-enabled/default
+ADD sites-enabled/ /etc/nginx/sites-enabled
+RUN mkdir -p /etc/nginx/include.d/rewrites/
+ADD ./rewrites.lua /etc/nginx/include.d/rewrites/rewrites.lua 

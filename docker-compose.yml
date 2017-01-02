@@ -1,0 +1,17 @@
+nginx-store:
+  image: busybox
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /usr/local/openresty
+  volumes_from:
+    - nginx-store
+  links:
+    - db
+
+db:
+  image: redis
