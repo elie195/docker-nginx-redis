@@ -5,6 +5,7 @@ ADD conf.d/ /usr/local/openresty/nginx/conf
 ADD ./redis.lua /usr/local/openresty/nginx/include.d/redis.lua
 ADD ./rewrites.lua /etc/nginx/rewrites/new_rewrites.lua
 ADD ./start.sh /tmp/start.sh
+ADD ./redis.txt /tmp/redis.txt
 RUN echo "\n\n# Docker extra config \nuser=root\naddn-hosts=/etc/hosts\n" >> /etc/dnsmasq.conf
 
 WORKDIR /usr/local/openresty
